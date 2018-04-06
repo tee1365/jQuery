@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: Verdana;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    .main-list {
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+
+    .main-list>li {
+      width: 300px;
+      position: relative;
+    }
+
+    .main-list>li>a {
+      display: block;
+      text-decoration: none;
+      background-color: #c7171e;
+      color: white;
+      border-bottom: 1px solid #de272e;
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    .main-list>li>span {
+      position: absolute;
+      top: 15px;
+      right: 10px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .secondary-list {
+      position: absolute;
+      top: 0;
+      left: 300px;
+      border: 1px solid #bbb;
+      display: none;
+      width: 300px;
+    }
+
+    .secondary-list>li {
+      width: 120px;
+      float: left;
+      padding: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <ul class="main-list">
+      <li>
+        <a href="">Programming language</a>
+        <span>></span>
+        <ul class="secondary-list">
+          <li>C#</li>
+          <li>F#</li>
+          <li>Python</li>
+          <li>Ruby</li>
+          <li>PHP</li>
+          <li>R</li>
+        </ul>
+      </li>
+      <li>
+        <a href="">Programming language</a>
+        <span>></span>
+        <ul class="secondary-list">
+          <li>F#</li>
+          <li>Python</li>
+          <li>Ruby</li>
+          <li>PHP</li>
+          <li>R</li>
+        </ul>
+      </li>
+      <li>
+        <a href="">Programming language</a>
+        <span>></span>
+        <ul class="secondary-list">
+          <li>C#</li>
+          <li>PHP</li>
+          <li>R</li>
+        </ul>
+      </li>
+      <li>
+        <a href="">Programming language</a>
+        <span>></span>
+        <ul class="secondary-list">
+          <li>C#</li>
+          <li>F#</li>
+          <li>Python</li>
+          <li>R</li>
+        </ul>
+      </li>
+      <li>
+        <a href="">Programming language</a>
+        <span>></span>
+        <ul class="secondary-list">
+          <li>C#</li>
+          <li>R</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    $(".main-list>li").on("mouseenter", function() {
+      $(this).find(".secondary-list").show();
+    })
+    $(".main-list>li").on("mouseleave", function() {
+      $(this).find(".secondary-list").hide();
+    })
+  </script>
+</body>
+
+</html>
