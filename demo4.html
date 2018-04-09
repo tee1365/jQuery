@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .clearfix:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .container {
+      width: 900px;
+      margin-top: 40px;
+      margin-left: 20px;
+      border: 1px solid;
+    }
+
+    .container li {
+      list-style: none;
+    }
+
+    .tabs>li {
+      float: left;
+      width: 33.3%;
+      padding: 10px 0;
+      text-align: center;
+      border-right: 1px solid #999;
+      border-bottom: 1px solid #999;
+      cursor: pointer;
+      background-color: white;
+    }
+
+    .tabs>li:last-child {
+      border-right: none;
+    }
+
+    .tabs>.active {
+      background-color: #ccc;
+    }
+
+    .wrap {
+      position: relative;
+      height: 100px;
+      overflow: hidden;
+    }
+
+    .contents {
+      position: absolute;
+      width: 2700px;
+      z-index: -1;
+    }
+
+    .contents>li {
+      float: left;
+      width: 900px;
+      height: 100px;
+      padding: 20px;
+    }
+
+    .contents>li:nth-child(1) {
+      background-color: red;
+    }
+
+    .contents>li:nth-child(2) {
+      background-color: lightgreen;
+    }
+
+    .contents>li:nth-child(3) {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <ul class="tabs clearfix">
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <div class="wrap">
+      <ul class="contents clearfix">
+        <li>content 1</li>
+        <li>content 2</li>
+        <li>content 3</li>
+      </ul>
+    </div>
+
+  </div>
+  <script>
+    $(".tabs").on("click", "li", function(e) {
+      var $this = $(this)
+      $this.siblings().removeClass("active")
+      $this.addClass("active")
+      var index = $this.index();
+      var $content = $this.parents(".container").find(".contents");
+      var width = $(".contents>li").outerWidth();
+
+      $content.animate({
+        left: -width * index
+      })
+    })
+  </script>
+</body>
+
+</html>
