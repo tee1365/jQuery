@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: lightblue;
+    }
+
+    .container {
+      margin: 20px auto;
+      width: 600px;
+      height: 200px;
+      position: relative;
+      background-color: white;
+    }
+
+    .clearfix:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    #btn1 {
+      background: #666;
+      border: none;
+      padding: 20px;
+      cursor: pointer;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .side {
+      position: fixed;
+      left: 20px;
+      top: 50px;
+      background-color: black;
+      z-index: 100;
+    }
+
+    .display {
+      padding: 60px;
+      border: none;
+      color: white;
+    }
+
+    .panel {
+      border: 1px solid;
+      padding: 50px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #ipt4 {
+      border: 2px solid;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #ipt4:focus {
+      outline: none;
+    }
+
+    .choice {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <button id="btn1">click</button>
+  </div>
+  <div class="container">
+    <div class="side">
+      <p class="display"></p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="panel">div</div>
+  </div>
+  <div class="container">
+    <input id="ipt4" type="text">
+  </div>
+  <div class="container">
+    <div class="choice">
+      <select id="languages">
+        <option value="R" class="language">R</option>
+        <option value="Python" class="language">Python</option>
+        <option value="Scala" class="language">Scala</option>
+        <option value="Ruby" class="language">Ruby</option>
+      </select>
+      <input id="ipt6" type="text">
+    </div>
+  </div>
+
+  <script>
+    // 1
+    $("#btn1").on("click", function(e) {
+      e.preventDefault()
+      var $btn = $(this)
+      $btn.css({
+        background: "red"
+      })
+      setTimeout(function() {
+        $btn.css({
+          background: "blue"
+        })
+      }, 1000)
+    })
+
+    //2
+    setInterval(function() {
+      var $distance = $(window).scrollTop();
+      //console.log($distance)
+      $(".display").text($distance)
+    }, 10)
+
+    //3
+    var $div = $(".panel")
+    $div.on("mouseenter", function() {
+      $(this).css({
+        backgroundColor: "red"
+      })
+    })
+    $div.on("mouseleave", function() {
+      $(this).css({
+        backgroundColor: "white"
+      })
+    })
+
+    //4
+    var $ipt = $("#ipt4")
+    $ipt.on("focus", function(e) {
+      e.preventDefault()
+      $(this).css({
+        border: "2px solid lightblue"
+      })
+    })
+    $ipt.on("input", function(e) {
+      e.preventDefault()
+      $(this).val($(this).val().toUpperCase())
+    })
+    $ipt.on("blur", function(e) {
+      e.preventDefault()
+      $(this).css({
+        border: "2px solid black"
+      })
+      console.log($(this).val())
+    })
+
+
+    //5
+    $("#languages").on("change", function() {
+      $("#ipt6").val($(this).val())
+    })
+  </script>
+</body>
+
+</html>
